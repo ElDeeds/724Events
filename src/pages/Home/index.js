@@ -15,6 +15,7 @@ import { useData } from "../../contexts/DataContext";
 const Page = () => {
   const { data } = useData();
 
+  // Tri des événements par date décroissante
   const sortedEvents = data?.events.sort((a, b) => new Date(b.date) - new Date(a.date));
   return <>
     <header>
@@ -118,6 +119,7 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
+        {/* Affichage de la dernière prestation triée */}
         {sortedEvents && sortedEvents.length > 0 && (
           <EventCard
             imageSrc={sortedEvents[0].cover}

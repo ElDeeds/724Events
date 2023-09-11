@@ -4,26 +4,31 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
+// Une fonction de simulation d'appel API asynchrone pour les tests
 const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
 
 const Form = ({ onSuccess, onError }) => {
+  // State local pour suivre l'état de l'envoi du formulaire
   const [sending, setSending] = useState(false);
+
+  // Fonction pour gérer l'envoi du formulaire
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
       setSending(true);
-      // We try to call mockContactApi
+      // On essaie d'appeler mockContactApi (simulant une requête asynchrone)
       try {
         await mockContactApi();
-        setSending(false); 
-        onSuccess();
+        setSending(false); // L'envoi est terminé
+        onSuccess(); // Appeler la fonction onSuccess en cas de succès
       } catch (err) {
-        setSending(false);
-        onError(err);
+        setSending(false); // L'envoi est terminé en cas d'erreur
+        onError(err); // Appeler la fonction onError en cas d'erreur
       }
     },
     [onSuccess, onError]
   );
+
   return (
     <form onSubmit={sendContact}>
       <div className="row">
@@ -54,14 +59,16 @@ const Form = ({ onSuccess, onError }) => {
   );
 };
 
+// Spécification des types attendus pour les props du composant Form
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
-}
+};
 
+// Valeurs par défaut pour les props si elles ne sont pas fournies
 Form.defaultProps = {
   onError: () => null,
   onSuccess: () => null,
-}
+};
 
 export default Form;

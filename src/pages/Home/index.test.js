@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Home from "./index";
 
 describe("When Form is created", () => {
@@ -21,10 +21,21 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      await screen.findByText("Message envoyé !");
+
+      // Utilisation de waitFor et d'un TimeOut
+      await waitFor(
+        () => {
+          const messageElement = document.querySelector(
+            '.ModalMessage--success > div'
+          );
+          expect(messageElement.textContent).toBe("Message envoyé !");
+        },
+        { timeout: 5000 }
+      );
     });
   });
 });
+
 
 
 
