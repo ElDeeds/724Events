@@ -59,13 +59,11 @@ const Form = ({ onSuccess, onError }) => {
   );
 };
 
-// Spécification des types attendus pour les props du composant Form
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
 };
 
-// Valeurs par défaut pour les props si elles ne sont pas fournies
 Form.defaultProps = {
   onError: () => null,
   onSuccess: () => null,
