@@ -19,9 +19,9 @@ const Select = ({
 
   // Fonction pour changer la valeur sélectionnée et l'état de la liste déroulante
   const changeValue = (newValue) => {
-    onChange(newValue); // Appel de la fonction onChange avec la nouvelle valeur
-    setValue(newValue); // Mise à jour de la valeur sélectionnée
-    setCollapsed(!collapsed); // Inversion de l'état de la liste déroulante
+    onChange(newValue); 
+    setValue(newValue); 
+    setCollapsed(!collapsed); 
   };
 
   return (
