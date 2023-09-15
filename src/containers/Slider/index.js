@@ -33,9 +33,6 @@ const Slider = () => {
     nextCard();
   });
 
-   // Utilisation de useEffect pour surveiller les changements de la fonction getMonth (s'il y en a)
-  useEffect(() => {
-  }, [getMonth]);
 
   return (
     <div className="SlideCardList">
